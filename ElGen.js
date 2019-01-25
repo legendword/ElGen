@@ -2,10 +2,14 @@
  ** Generates elements according to template
  **/
 var ElGen = {
-	version: "1.0",
+	version: "1.1",
 	cur: {}, //stores temp data
 	path: [], //stores path nodes
-	run: function(_template,_data) { //create element
+	config: {}, //config temp overwrite
+	run: function(_template,_data,_config) { //create element
+		if (_config) {
+			ElGen.config = _config;
+		}
 		if (_data.push) { //test if _data is an array
 			var _res = [];
 			for (var _i of _data) {
@@ -59,6 +63,10 @@ var ElGen = {
 			if (ElGen.cur[_tmp]){
 				_ans = _ans.slice(0,_shift+_begin) + ElGen.cur[_tmp] + _ans.slice(_shift+_begin+_end+2,_ans.length);
 				_shift -= _end+2-ElGen.cur[_tmp].length;
+			}
+			else if (ElGen.config.strictReplace) {
+				_ans = _ans.slice(0,_shift+_begin) + _ans.slice(_shift+_begin+_end+2,_ans.length);
+				_shift -= _end+2;
 			}
 			_wd = _wd.slice(_begin+_end+2,_wd.length);
 			_shift += _begin+_end+2;
