@@ -2,7 +2,7 @@
  ** Generates elements according to template
  **/
 var ElGen = {
-	version: "1.1",
+	version: "1.2",
 	cur: {}, //stores temp data
 	path: [], //stores path nodes
 	config: {}, //config temp overwrite
@@ -10,6 +10,7 @@ var ElGen = {
 		if (_config) {
 			ElGen.config = _config;
 		}
+		else ElGen.config = {};
 		if (_data.push) { //test if _data is an array
 			var _res = [];
 			for (var _i of _data) {
@@ -60,7 +61,8 @@ var ElGen = {
 				break;
 			}
 			_tmp = _wd.slice(_begin+1,_begin+_end+1);
-			if (ElGen.cur[_tmp]){
+			if (ElGen.cur[_tmp]!=null){
+				ElGen.cur[_tmp] = ElGen.cur[_tmp].toString();
 				_ans = _ans.slice(0,_shift+_begin) + ElGen.cur[_tmp] + _ans.slice(_shift+_begin+_end+2,_ans.length);
 				_shift -= _end+2-ElGen.cur[_tmp].length;
 			}
@@ -77,7 +79,7 @@ var ElGen = {
 var tmpl = {
 	node: "p",
 	attr: {"style":"color:$color$"},
-	html: "hi, $user$$great$. $justTesting$ ",
+	html: "dropdownClick($listId$,$id$,'delete')",
 	children: [
 		{
 			node: "span",
