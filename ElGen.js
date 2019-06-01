@@ -76,15 +76,3 @@ var ElGen = {
 		return _ans;
 	}
 }
-var tmpl = {
-	node: "p",
-	attr: {"style":"color:$color$"},
-	html: "dropdownClick($listId$,$id$,'delete')",
-	children: [
-		{
-			node: "span",
-			attr: {"style":"color:green"},
-			html: "nice day!"
-		}
-	]
-}

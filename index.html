@@ -6,9 +6,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="ElGen.js"></script>
+    <script>
+    var tmpl = {
+        node: "p",
+        attr: { "style": "color:$color$;" },
+        html: "You can have constant HTML, or <span style='font-size:$fontSize$'>$text$</span>.",
+        children: [{
+            node: "a",
+            attr: { "href": "legendword.com", "style": "color:$subColor$;display:block;margin-top:10px;" },
+            html: "And you can have children elements!"
+        }]
+    }
+    window.onload = function() {
+    	document.body.appendChild(ElGen.run(tmpl, {color: "red", fontSize: "200%", text: "variable HTML", subColor: "green"}));
+    }
+    </script>
 </head>
 
 <body>
+	<p>(Look at source code)</p>
 </body>
 
 </html>
