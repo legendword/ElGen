@@ -39,7 +39,7 @@ Data in these strings is described in the following syntax: `$dataKey$`, where "
 
 `config` is optional. You can change some configurations here.
 
-- `strictReplace`: _ _boolean_ _ whether or not empty **data replacements** (missing the value in `data`) should be replaced with an empty string.
+- `strictReplace`: _boolean_ whether or not empty **data replacements** (missing the value in `data`) should be replaced with an empty string.
 
 ---
 
